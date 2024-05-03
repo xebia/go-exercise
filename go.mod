@@ -6,7 +6,7 @@ require (
 	github.com/golang/mock v1.6.0
 	github.com/sendgrid/sendgrid-go v3.12.0+incompatible
 	google.golang.org/grpc v1.50.1
-	google.golang.org/protobuf v1.28.1
+	google.golang.org/protobuf v1.33.0
 )
 
 require (
