@@ -1,4 +1,4 @@
-package emailsending
+package email
 
 import (
 	"fmt"
@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/MarcGrol/patientregistration/lib/api/emailsender"
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )
@@ -15,7 +14,7 @@ type sendgridEmailSender struct {
 	apiKey string
 }
 
-func New() emailsender.EmailSender {
+func New() EmailSender {
 
 	return &sendgridEmailSender{
 		apiKey: os.Getenv("SENDGRID_API_KEY"),

@@ -1,4 +1,4 @@
-package regprotobuf
+package protobuf
 
 import (
 	"fmt"

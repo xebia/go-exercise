@@ -1,4 +1,4 @@
-package datastorer
+package datastore
 
 //go:generate mockgen -source=dataStorer.go -destination=dataStorerMocks.go -package=datastorer PatientStorer
 

@@ -4,13 +4,14 @@
 // 	protoc        v3.21.8
 // source: registration.proto
 
-package regprotobuf
+package protobuf
 
 import (
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
+
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -175,7 +176,7 @@ type Patient struct {
 	FullName string             `protobuf:"bytes,2,opt,name=fullName,proto3" json:"fullName,omitempty"`
 	Address  *Address           `protobuf:"bytes,3,opt,name=address,proto3" json:"address,omitempty"`
 	Contact  *Contact           `protobuf:"bytes,4,opt,name=contact,proto3" json:"contact,omitempty"`
-	Status   RegistrationStatus `protobuf:"varint,5,opt,name=status,proto3,enum=regprotobuf.RegistrationStatus" json:"status,omitempty"`
+	Status   RegistrationStatus `protobuf:"varint,5,opt,name=status,proto3,enum=protobuf.RegistrationStatus" json:"status,omitempty"`
 }
 
 func (x *Patient) Reset() {
@@ -418,20 +419,20 @@ func file_registration_proto_rawDescGZIP() []byte {
 var file_registration_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_registration_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_registration_proto_goTypes = []interface{}{
-	(RegistrationStatus)(0),         // 0: regprotobuf.RegistrationStatus
-	(*RegisterPatientRequest)(nil),  // 1: regprotobuf.RegisterPatientRequest
-	(*RegisterPatientResponse)(nil), // 2: regprotobuf.RegisterPatientResponse
-	(*Patient)(nil),                 // 3: regprotobuf.Patient
-	(*Address)(nil),                 // 4: regprotobuf.Address
-	(*Contact)(nil),                 // 5: regprotobuf.Contact
+	(RegistrationStatus)(0),         // 0: protobuf.RegistrationStatus
+	(*RegisterPatientRequest)(nil),  // 1: protobuf.RegisterPatientRequest
+	(*RegisterPatientResponse)(nil), // 2: protobuf.RegisterPatientResponse
+	(*Patient)(nil),                 // 3: protobuf.Patient
+	(*Address)(nil),                 // 4: protobuf.Address
+	(*Contact)(nil),                 // 5: protobuf.Contact
 }
 var file_registration_proto_depIdxs = []int32{
-	3, // 0: regprotobuf.RegisterPatientRequest.patient:type_name -> regprotobuf.Patient
-	4, // 1: regprotobuf.Patient.address:type_name -> regprotobuf.Address
-	5, // 2: regprotobuf.Patient.contact:type_name -> regprotobuf.Contact
-	0, // 3: regprotobuf.Patient.status:type_name -> regprotobuf.RegistrationStatus
-	1, // 4: regprotobuf.RegistrationService.RegisterPatient:input_type -> regprotobuf.RegisterPatientRequest
-	2, // 5: regprotobuf.RegistrationService.RegisterPatient:output_type -> regprotobuf.RegisterPatientResponse
+	3, // 0: protobuf.RegisterPatientRequest.patient:type_name -> protobuf.Patient
+	4, // 1: protobuf.Patient.address:type_name -> protobuf.Address
+	5, // 2: protobuf.Patient.contact:type_name -> protobuf.Contact
+	0, // 3: protobuf.Patient.status:type_name -> protobuf.RegistrationStatus
+	1, // 4: protobuf.RegistrationService.RegisterPatient:input_type -> protobuf.RegisterPatientRequest
+	2, // 5: protobuf.RegistrationService.RegisterPatient:output_type -> protobuf.RegisterPatientResponse
 	5, // [5:6] is the sub-list for method output_type
 	4, // [4:5] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name

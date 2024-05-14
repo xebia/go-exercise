@@ -2,7 +2,7 @@
 // Source: emailSender.go
 
 // Package emailsender is a generated GoMock package.
-package emailsender
+package email
 
 import (
 	reflect "reflect"
