@@ -1,7 +1,8 @@
-package regprotobuf
+package protobuf
 
 import (
 	"fmt"
+
 	"google.golang.org/grpc"
 )
 

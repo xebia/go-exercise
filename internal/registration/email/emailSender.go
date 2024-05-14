@@ -1,4 +1,4 @@
-package emailsender
+package email
 
 //go:generate mockgen -source=emailSender.go -destination=emailSenderMocks.go -package=emailsender EmailSender
 

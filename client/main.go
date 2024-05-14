@@ -7,9 +7,8 @@ import (
 	"log"
 	"os"
 	"time"
-	
-	"github.com/MarcGrol/patientregistration/regprotobuf"
 
+	"github.com/MarcGrol/patientregistration/internal/registration/protobuf"
 )
 
 func main() {
@@ -17,7 +16,7 @@ func main() {
 
 	log.Printf("args: %+v", cliArgs)
 
-	client, cleanup, err := regprotobuf.NewGrpcClient(regprotobuf.DefaultPort)
+	client, cleanup, err := protobuf.NewGrpcClient(protobuf.DefaultPort)
 	if err != nil {
 		log.Fatalf("*** Error creating motification-client: %v", err)
 	}
@@ -44,16 +43,16 @@ func main() {
 	}
 }
 
-func startRegistration(ctx context.Context, client regprotobuf.RegistrationServiceClient, bsn int, name, email string) (string, error) {
-	resp, err := client.RegisterPatient(ctx, &regprotobuf.RegisterPatientRequest{
-		Patient: &regprotobuf.Patient{
+func startRegistration(ctx context.Context, client protobuf.RegistrationServiceClient, bsn int, name, email string) (string, error) {
+	resp, err := client.RegisterPatient(ctx, &protobuf.RegisterPatientRequest{
+		Patient: &protobuf.Patient{
 			BSN:      fmt.Sprintf("%d", bsn),
 			FullName: name,
-			Address: &regprotobuf.Address{
+			Address: &protobuf.Address{
 				PostalCode:  "3731TB",
 				HouseNumber: 79,
 			},
-			Contact: &regprotobuf.Contact{
+			Contact: &protobuf.Contact{
 				EmailAddress: email,
 			},
 		},
@@ -64,7 +63,7 @@ func startRegistration(ctx context.Context, client regprotobuf.RegistrationServi
 	return resp.PatientUid, nil
 }
 
-func completeRegistration(ctx context.Context, client regprotobuf.RegistrationServiceClient, patientUid string, pinCode int) error {
+func completeRegistration(ctx context.Context, client protobuf.RegistrationServiceClient, patientUid string, pinCode int) error {
 	// TODO
 	return nil
 }

@@ -4,10 +4,11 @@
 // - protoc             v3.21.8
 // source: registration.proto
 
-package regprotobuf
+package protobuf
 
 import (
 	context "context"
+
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
@@ -35,7 +36,7 @@ func NewRegistrationServiceClient(cc grpc.ClientConnInterface) RegistrationServi
 
 func (c *registrationServiceClient) RegisterPatient(ctx context.Context, in *RegisterPatientRequest, opts ...grpc.CallOption) (*RegisterPatientResponse, error) {
 	out := new(RegisterPatientResponse)
-	err := c.cc.Invoke(ctx, "/regprotobuf.RegistrationService/RegisterPatient", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/protobuf.RegistrationService/RegisterPatient", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +81,7 @@ func _RegistrationService_RegisterPatient_Handler(srv interface{}, ctx context.C
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/regprotobuf.RegistrationService/RegisterPatient",
+		FullMethod: "/protobuf.RegistrationService/RegisterPatient",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RegistrationServiceServer).RegisterPatient(ctx, req.(*RegisterPatientRequest))
@@ -92,7 +93,7 @@ func _RegistrationService_RegisterPatient_Handler(srv interface{}, ctx context.C
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var RegistrationService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "regprotobuf.RegistrationService",
+	ServiceName: "protobuf.RegistrationService",
 	HandlerType: (*RegistrationServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

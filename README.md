@@ -23,8 +23,8 @@ You can make use of the following building blocks 👇
 
 ### Registration flow
 
-![alt text](./docs/registration-flow.png)
+![alt text](docs/registration-flow.png)
 
 ### Sequence Diagram
 
-![alt text](./docs/sequence-diagram.png)
+![alt text](docs/sequence-diagram.png)

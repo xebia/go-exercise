@@ -2,6 +2,6 @@
 
 ## Starting the server
 
-    go install && service
+    go install && registration
 
 This will start a GRPC server at localhost on port 60002
