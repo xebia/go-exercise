@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/MarcGrol/patientregistration/internal/registration/datastore"
-	"github.com/MarcGrol/patientregistration/internal/registration/email"
-	"github.com/MarcGrol/patientregistration/internal/registration/protobuf"
+	"github.com/xebia/go-exercise/internal/registration/datastore"
+	"github.com/xebia/go-exercise/internal/registration/email"
+	"github.com/xebia/go-exercise/internal/registration/protobuf"
 )
 
 type Service struct {
