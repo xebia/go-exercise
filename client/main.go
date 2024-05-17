@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/MarcGrol/patientregistration/internal/registration/protobuf"
+	"github.com/xebia/go-exercise/internal/registration/protobuf"
 )
 
 func main() {

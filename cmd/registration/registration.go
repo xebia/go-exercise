@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/MarcGrol/patientregistration/internal/registration"
-	"github.com/MarcGrol/patientregistration/internal/registration/datastore"
-	"github.com/MarcGrol/patientregistration/internal/registration/email"
-	"github.com/MarcGrol/patientregistration/internal/registration/protobuf"
+	"github.com/xebia/go-exercise/internal/registration"
+	"github.com/xebia/go-exercise/internal/registration/datastore"
+	"github.com/xebia/go-exercise/internal/registration/email"
+	"github.com/xebia/go-exercise/internal/registration/protobuf"
 )
 
 func main() {

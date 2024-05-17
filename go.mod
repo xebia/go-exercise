@@ -1,6 +1,6 @@
-module github.com/MarcGrol/patientregistration
+module github.com/xebia/go-exercise
 
-go 1.19
+go 1.22
 
 require (
 	github.com/golang/mock v1.6.0

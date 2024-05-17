@@ -22,7 +22,7 @@ func New() EmailSender {
 }
 
 func (es *sendgridEmailSender) SendEmail(recipientAddress string, subject, body string) error {
-	from := mail.NewEmail("Marc Grol", "mgrol@xebia.com")
+	from := mail.NewEmail("YOUR NAME", "YOUR_EMAIL@FOO.BAR")
 	to := mail.NewEmail("", recipientAddress)
 	htmlContent := "<strong>" + body + "</strong>"
 	message := mail.NewSingleEmail(from, subject, to, body, htmlContent)
