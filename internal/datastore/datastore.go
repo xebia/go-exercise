@@ -3,8 +3,8 @@ package datastore
 import "sync"
 
 type Service interface {
-	GetPatientOnUid(uid string) (Patient, bool, error)
-	PutPatientOnUid(patient Patient) error
+	GetPatientOnUID(uid string) (Patient, bool, error)
+	PutPatientOnUID(patient Patient) error
 }
 
 type Patient struct {
@@ -45,7 +45,7 @@ func NewService() Service {
 		patients: map[string]Patient{},
 	}
 }
-func (ds *inMemoryDataStore) PutPatientOnUid(patient Patient) error {
+func (ds *inMemoryDataStore) PutPatientOnUID(patient Patient) error {
 	ds.Lock()
 	defer ds.Unlock()
 
@@ -54,7 +54,7 @@ func (ds *inMemoryDataStore) PutPatientOnUid(patient Patient) error {
 	return nil
 }
 
-func (ds *inMemoryDataStore) GetPatientOnUid(patientUID string) (Patient, bool, error) {
+func (ds *inMemoryDataStore) GetPatientOnUID(patientUID string) (Patient, bool, error) {
 	ds.Lock()
 	defer ds.Unlock()
 

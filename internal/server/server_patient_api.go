@@ -1,10 +1,10 @@
 package server
 
 import (
-	"fmt"
 	"net/http"
 )
 
+//nolint:revive
 func (s *Server) createPatient(w http.ResponseWriter, r *http.Request) {
-	writeError(w, fmt.Sprintf("not implemented"), http.StatusNotImplemented)
+	writeError(w, "not implemented", http.StatusNotImplemented)
 }

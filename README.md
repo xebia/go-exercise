@@ -20,7 +20,8 @@ You can make use of the following building blocks 👇
 
 - PatientStorer - interface + implementation
 - EmailSender - interface + implementation
-- Server  boilerplate + testsuite
+- Server boilerplate + testsuite
+- Makefile ready to go with handy commands
 
 ### Registration flow
 

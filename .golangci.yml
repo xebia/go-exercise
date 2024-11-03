@@ -1,0 +1,43 @@
+run:
+  concurrency: 8
+  deadline: 5m
+  modules-download-mode: readonly
+
+linters:
+  enable:
+    - asasalint
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - cyclop
+    - dupl
+    - errcheck
+    - errname
+    - errorlint
+    - exhaustive
+    - copyloopvar
+    - forcetypeassert
+    - gci
+    - gochecknoglobals
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - gosec
+    - makezero
+    - nakedret
+    - nestif
+    - nilerr
+    - noctx
+    - nonamedreturns
+    - reassign
+    - revive
+
+linters-settings:
+  cyclop:
+    max-complexity: 20
+  errcheck:
+    check-type-assertions: true
+    check-blank: true
+  errorlint:
+    errorf: false

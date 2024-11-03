@@ -22,7 +22,7 @@ type args struct {
 	name       string
 	bsn        int
 	pinCode    int
-	patientUid string
+	patientUID string
 }
 
 func parseArgs() args {
@@ -34,7 +34,7 @@ func parseArgs() args {
 	name := flag.String("name", "Michael Jordan", "Name of patient")
 	email := flag.String("email", "eva.marc@hetnet.nl", "Email address of patient")
 
-	patientUid := flag.String("patient-uid", "", "Uid of patient")
+	patientUID := flag.String("patient-uid", "", "Uid of patient")
 	pinCode := flag.Int("pin-code", -1, "Pincode to confirm registration")
 
 	flag.Parse()
@@ -54,6 +54,6 @@ func parseArgs() args {
 		bsn:     *bsn,
 
 		pinCode:    *pinCode,
-		patientUid: *patientUid,
+		patientUID: *patientUID,
 	}
 }

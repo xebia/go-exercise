@@ -5,9 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/xebia/go-exercise/internal/datastore"
-	"github.com/xebia/go-exercise/internal/email"
-	"github.com/xebia/go-exercise/pkg/slogx"
 	"log/slog"
 	"net"
 	"net/http"
@@ -16,6 +13,9 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/xebia/go-exercise/internal/datastore"
+	"github.com/xebia/go-exercise/internal/email"
+	"github.com/xebia/go-exercise/pkg/slogx"
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 )

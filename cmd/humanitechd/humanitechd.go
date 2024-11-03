@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+
 	"github.com/xebia/go-exercise/internal/datastore"
 	"github.com/xebia/go-exercise/internal/email"
 	"github.com/xebia/go-exercise/internal/server"
@@ -12,6 +14,7 @@ func main() {
 	es := email.NewService()
 
 	srv := server.NewServer(ds, es)
-	addr := fmt.Sprintf("%s:%s", "127.0.0.1", "8080")
+
+	addr := fmt.Sprintf("%s:%s", os.Getenv("HOST"), os.Getenv("PORT"))
 	srv.ListenAndServe(addr)
 }
