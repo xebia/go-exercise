@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/xebia/go-exercise/internal/registration/datastore"
-	"github.com/xebia/go-exercise/internal/registration/email"
+	"github.com/xebia/go-exercise/internal/datastore"
+	"github.com/xebia/go-exercise/internal/email"
 	"github.com/xebia/go-exercise/internal/server"
 )
 
