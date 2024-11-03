@@ -2,6 +2,7 @@
 
 export HOST = 127.0.0.1
 export PORT = 8080
+export SENDGRID_API_KEY = #
 
 run:
 	go run ./cmd/humanitechd/humanitechd.go

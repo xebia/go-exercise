@@ -10,8 +10,10 @@ import (
 )
 
 func main() {
+	emailAPIKey := os.Getenv("SENDGRID_API_KEY")
+
 	ds := db.NewService()
-	es := email.NewService()
+	es := email.NewService(emailAPIKey)
 
 	srv := server.NewServer(ds, es)
 

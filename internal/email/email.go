@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
@@ -18,10 +17,9 @@ type service struct {
 	apiKey string
 }
 
-func NewService() Service {
-
+func NewService(apiKey string) Service {
 	return &service{
-		apiKey: os.Getenv("SENDGRID_API_KEY"),
+		apiKey: apiKey,
 	}
 }
 
