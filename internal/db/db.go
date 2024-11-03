@@ -15,33 +15,8 @@ type Service interface {
 }
 
 type Patient struct {
-	UID                string
-	BSN                string
-	FullName           string
-	Address            StreetAddress
-	Contact            Contact
-	RegistrationPin    int
-	FailedPinCount     int
-	RegistrationStatus RegistrationStatus
+	// TODO add Patient type structure
 }
-
-type StreetAddress struct {
-	PostalCode  string
-	HouseNumber int
-}
-
-type Contact struct {
-	EmailAddress string
-}
-type RegistrationStatus int
-
-const (
-	Unregistered RegistrationStatus = iota
-	Pending
-	Registered
-	Blocked
-)
-
 type inMemoryDataStore struct {
 	sync.Mutex
 	patients map[string]Patient
