@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Humanitech APIs
+  description: API schema for registering patients
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /patients/new:
+    post:
+      summary: creates a new patient
+      operationId: createPatient
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePatientRequest'
+      responses:
+        '200':
+          description: Successful patient registration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreatePatientResponse'
+components:
+  schemas:
+    CreatePatientRequest:
+      type: object
+      properties:
+        patient:
+          $ref: '#/components/schemas/Patient'
+      required:
+        - patient
+
+    CreatePatientResponse:
+      type: object
+      properties:
+        patientUid:
+          type: string
+      required:
+        - patientUid
+
+    Patient:
+      type: object
+      properties:
+        BSN:
+          type: string
+        fullName:
+          type: string
+        address:
+          $ref: '#/components/schemas/Address'
+        contact:
+          $ref: '#/components/schemas/Contact'
+        status:
+          $ref: '#/components/schemas/RegistrationStatus'
+      required:
+        - BSN
+        - fullName
+        - address
+        - contact
+        - status
+
+    Address:
+      type: object
+      properties:
+        postalCode:
+          type: string
+        houseNumber:
+          type: integer
+      required:
+        - postalCode
+        - houseNumber
+
+    Contact:
+      type: object
+      properties:
+        emailAddress:
+          type: string
+      required:
+        - emailAddress
+
+    RegistrationStatus:
+      type: string
+      enum:
+        - REGISTRATION_UNKNOWN
+        - REGISTRATION_PENDING
+        - REGISTRATION_CONFIRMED
+        - REGISTRATION_BLOCKED
