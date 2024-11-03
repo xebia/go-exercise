@@ -1,10 +1,16 @@
 package datastore
 
-import "sync"
+import (
+	"errors"
+	"github.com/google/uuid"
+	"sync"
+)
+
+var ErrNotFound = errors.New("not found")
 
 type Service interface {
-	GetPatientOnUID(uid string) (Patient, bool, error)
-	PutPatientOnUID(patient Patient) error
+	CreatePatient(patient Patient) error
+	GetPatientByUID(uid string) (Patient, error)
 }
 
 type Patient struct {
@@ -45,15 +51,18 @@ func NewService() Service {
 		patients: map[string]Patient{},
 	}
 }
-func (ds *inMemoryDataStore) PutPatientOnUID(patient Patient) error {
+
+func (ds *inMemoryDataStore) GetPatientByUID(uid string) (Patient, error) {
 	ds.Lock()
 	defer ds.Unlock()
 
-	ds.patients[patient.UID] = patient
+	patient, ok := ds.patients[uid]
+	if !ok {
+		return Patient{}, ErrNotFound
+	}
 
-	return nil
+	return patient, nil
 }
-
 func (ds *inMemoryDataStore) GetPatientOnUID(patientUID string) (Patient, bool, error) {
 	ds.Lock()
 	defer ds.Unlock()
@@ -61,4 +70,14 @@ func (ds *inMemoryDataStore) GetPatientOnUID(patientUID string) (Patient, bool, 
 	patient, found := ds.patients[patientUID]
 
 	return patient, found, nil
+}
+
+func (ds *inMemoryDataStore) CreatePatient(patient Patient) error {
+	ds.Lock()
+	defer ds.Unlock()
+
+	uid := uuid.New().String()
+	ds.patients[uid] = patient
+
+	return nil
 }
