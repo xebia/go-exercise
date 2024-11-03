@@ -5,16 +5,24 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/suite"
+	dbMock "github.com/xebia/go-exercise/internal/db/testdata"
+	emailMock "github.com/xebia/go-exercise/internal/email/testdata"
 )
 
 type ServerSuite struct {
+	//nolint:unused
+	dbMock *dbMock.Mock
+	//nolint:unused
+	emailMock *emailMock.Mock
 	suite.Suite
 	server *Server
 }
 
 func (ss *ServerSuite) SetupSuite() {
 	addr := "localhost:10000"
-	ss.server = NewServer(nil, nil)
+	dm := &dbMock.Mock{}
+	em := &emailMock.Mock{}
+	ss.server = NewServer(dm, em)
 
 	go func() {
 		ss.server.ListenAndServe(addr)
