@@ -1,8 +1,8 @@
 package datastore
 
-//go:generate mockgen -source=dataStorer.go -destination=dataStorerMocks.go -package=datastorer PatientStorer
+import "sync"
 
-type PatientStorer interface {
+type Service interface {
 	GetPatientOnUid(uid string) (Patient, bool, error)
 	PutPatientOnUid(patient Patient) error
 }
@@ -34,3 +34,31 @@ const (
 	Registered
 	Blocked
 )
+
+type inMemoryDataStore struct {
+	sync.Mutex
+	patients map[string]Patient
+}
+
+func NewService() Service {
+	return &inMemoryDataStore{
+		patients: map[string]Patient{},
+	}
+}
+func (ds *inMemoryDataStore) PutPatientOnUid(patient Patient) error {
+	ds.Lock()
+	defer ds.Unlock()
+
+	ds.patients[patient.UID] = patient
+
+	return nil
+}
+
+func (ds *inMemoryDataStore) GetPatientOnUid(patientUID string) (Patient, bool, error) {
+	ds.Lock()
+	defer ds.Unlock()
+
+	patient, found := ds.patients[patientUID]
+
+	return patient, found, nil
+}
