@@ -1,6 +1,6 @@
-# GRPC Registration client
+# Humanitech client
 
-This will connect to a GRPC server at localhost on port 60002
+This will connect to an HTTP server at localhost on port 8080
 
 ## Compile the client
 
