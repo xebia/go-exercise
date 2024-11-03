@@ -1,14 +1,10 @@
 package main
 
 import (
-	"context"
 	"flag"
 	"fmt"
 	"log"
 	"os"
-	"time"
-
-	"github.com/xebia/go-exercise/internal/registration/protobuf"
 )
 
 func main() {
@@ -16,56 +12,8 @@ func main() {
 
 	log.Printf("args: %+v", cliArgs)
 
-	client, cleanup, err := protobuf.NewGrpcClient(protobuf.DefaultPort)
-	if err != nil {
-		log.Fatalf("*** Error creating motification-client: %v", err)
-	}
-	defer cleanup()
-	log.Printf("Created registration-client")
+	// create http client and send requests
 
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
-	if cliArgs.command == "start-registration" {
-		patientUid, err := startRegistration(ctx, client, cliArgs.bsn, cliArgs.name, cliArgs.email)
-		if err != nil {
-			log.Fatal(err)
-		}
-		log.Printf("Patient %s registered", patientUid)
-	} else if cliArgs.command == "complete-registration" {
-		err = completeRegistration(ctx, client, cliArgs.patientUid, cliArgs.pinCode)
-		if err != nil {
-			log.Fatal(err)
-		}
-		log.Printf("Registration completed for patient %s", cliArgs.patientUid)
-	} else {
-		log.Fatalf("Unrecognized command %s", cliArgs.command)
-	}
-}
-
-func startRegistration(ctx context.Context, client protobuf.RegistrationServiceClient, bsn int, name, email string) (string, error) {
-	resp, err := client.RegisterPatient(ctx, &protobuf.RegisterPatientRequest{
-		Patient: &protobuf.Patient{
-			BSN:      fmt.Sprintf("%d", bsn),
-			FullName: name,
-			Address: &protobuf.Address{
-				PostalCode:  "3731TB",
-				HouseNumber: 79,
-			},
-			Contact: &protobuf.Contact{
-				EmailAddress: email,
-			},
-		},
-	})
-	if err != nil {
-		return "", fmt.Errorf("Error registering client: %s", err)
-	}
-	return resp.PatientUid, nil
-}
-
-func completeRegistration(ctx context.Context, client protobuf.RegistrationServiceClient, patientUid string, pinCode int) error {
-	// TODO
-	return nil
 }
 
 type args struct {
