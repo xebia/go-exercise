@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/xebia/go-exercise/internal/datastore"
+	"github.com/xebia/go-exercise/internal/db"
 	"github.com/xebia/go-exercise/internal/email"
 	"github.com/xebia/go-exercise/pkg/slogx"
 	"golang.org/x/net/http2"
@@ -21,13 +21,13 @@ import (
 )
 
 type Server struct {
-	datastoreService datastore.Service
+	datastoreService db.Service
 	emailService     email.Service
 	router           *http.ServeMux
 	stopCh           chan os.Signal
 }
 
-func NewServer(ds datastore.Service, es email.Service) *Server {
+func NewServer(ds db.Service, es email.Service) *Server {
 	s := &Server{
 		datastoreService: ds,
 		emailService:     es,

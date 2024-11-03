@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/xebia/go-exercise/internal/datastore"
+	"github.com/xebia/go-exercise/internal/db"
 	"github.com/xebia/go-exercise/internal/email"
 	"github.com/xebia/go-exercise/internal/server"
 )
 
 func main() {
-	ds := datastore.NewService()
+	ds := db.NewService()
 	es := email.NewService()
 
 	srv := server.NewServer(ds, es)

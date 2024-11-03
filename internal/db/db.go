@@ -1,9 +1,10 @@
-package datastore
+package db
 
 import (
 	"errors"
-	"github.com/google/uuid"
 	"sync"
+
+	"github.com/google/uuid"
 )
 
 var ErrNotFound = errors.New("not found")
