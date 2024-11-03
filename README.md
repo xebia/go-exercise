@@ -21,6 +21,7 @@ You can make use of the following building blocks 👇
 - PatientStorer - interface + implementation
 - EmailSender - interface + implementation
 - Server boilerplate + testsuite
+- [api schema](./humanitech.yaml) for implementation or inspiration
 - Makefile ready to go with handy commands
 
 ### Registration flow
