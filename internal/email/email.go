@@ -1,6 +1,7 @@
 package email
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
@@ -10,7 +11,7 @@ import (
 )
 
 type Service interface {
-	SendEmail(emailAddress, subject, body string) error
+	SendEmail(ctx context.Context, emailAddress, subject, body string) error
 }
 
 type service struct {
@@ -23,13 +24,15 @@ func NewService(apiKey string) Service {
 	}
 }
 
-func (s *service) SendEmail(recipientAddress string, subject, body string) error {
+func (s *service) SendEmail(ctx context.Context, recipientAddress string, subject, body string) error {
 	from := mail.NewEmail("YOUR NAME", "YOUR_EMAIL@FOO.BAR")
 	to := mail.NewEmail("", recipientAddress)
+
 	htmlContent := "<strong>" + body + "</strong>"
 	message := mail.NewSingleEmail(from, subject, to, body, htmlContent)
 	client := sendgrid.NewSendClient(s.apiKey)
-	response, err := client.Send(message)
+
+	response, err := client.SendWithContext(ctx, message)
 	if err != nil {
 		return fmt.Errorf("Error sending email: %s", err)
 	}
