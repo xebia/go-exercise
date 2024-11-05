@@ -1,5 +1,7 @@
 # Humanitech
 
+[Golang project layout](https://github.com/golang-standards/project-layout)
+
 ## Scenario:
 
 We are building a new platform for patients to gain insights in their medical history. The platform is called
