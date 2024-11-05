@@ -2,7 +2,7 @@
 
 export HOST = 127.0.0.1
 export PORT = 8080
-export SENDGRID_API_KEY = 0ede11be5e8c76970a3ed570f58fbee8
+export SENDGRID_API_KEY = #
 
 
 test:
