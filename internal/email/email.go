@@ -25,7 +25,7 @@ func NewService(apiKey string) Service {
 }
 
 func (s *service) SendEmail(ctx context.Context, recipientAddress string, subject, body string) error {
-	from := mail.NewEmail("YOUR NAME", "YOUR_EMAIL@FOO.BAR")
+	from := mail.NewEmail("Patrick", "pakil@xebia.com")
 	to := mail.NewEmail("", recipientAddress)
 
 	htmlContent := "<strong>" + body + "</strong>"
@@ -34,10 +34,10 @@ func (s *service) SendEmail(ctx context.Context, recipientAddress string, subjec
 
 	response, err := client.SendWithContext(ctx, message)
 	if err != nil {
-		return fmt.Errorf("Error sending email: %s", err)
+		return fmt.Errorf("error sending email: %s", err)
 	}
 	if response.StatusCode != http.StatusAccepted {
-		return fmt.Errorf("Error sending email: %d", response.StatusCode)
+		return fmt.Errorf("error sending email: %d", response.StatusCode)
 	}
 	log.Printf("Successfully send mail to %s (%+v	)", recipientAddress, response)
 
