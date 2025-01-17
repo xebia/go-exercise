@@ -39,14 +39,6 @@ func (ds *inMemoryDataStore) GetPatientByUID(uid string) (Patient, error) {
 
 	return patient, nil
 }
-func (ds *inMemoryDataStore) GetPatientOnUID(patientUID string) (Patient, bool, error) {
-	ds.Lock()
-	defer ds.Unlock()
-
-	patient, found := ds.patients[patientUID]
-
-	return patient, found, nil
-}
 
 func (ds *inMemoryDataStore) CreatePatient(patient Patient) error {
 	ds.Lock()
